@@ -11,7 +11,7 @@ function getHumanChoice() {
         return humanChoice;
     }else {
         console.log("Please enter a valid choice.");
-        return null;
+        return getHumanChoice();
     }
 }
 function playRound(humanChoice, computerChoice) {
@@ -43,11 +43,26 @@ function playRound(humanChoice, computerChoice) {
             computerScore++;
         }else {
             console.log(`You Won! Scissor beats Paper.`);
+            humanScore++;
         }
     }
 }
+function playGame() {
+    for (let round = 1; round <= 5; round++) {
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);       
+    }
 
-playRound(humanSelection, computerSelection);
+    console.log("====== [Game Result] ======");
+    console.log(`Human Score: ${humanScore}\nComputer Score: ${computerScore}`);
+    if (humanScore > computerScore) {
+        console.log("You Won!");
+    }else if(computerScore > humanScore) {
+        console.log("You Lose!");
+    }else {
+        console.log("Tie Game!");
+    }
+}
+playGame();
