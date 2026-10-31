@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3) + 1;
     return computerChoice;
@@ -11,6 +14,40 @@ function getHumanChoice() {
         return null;
     }
 }
+function playRound(humanChoice, computerChoice) {
+    if(humanChoice == 1) {
+        if(computerChoice == 1){
+            console.log(`Tie Game!`);
+        }else if(computerChoice == 2) {
+            console.log(`You Lose! Paper beats Rock.`);
+            computerScore++;
+        }else {
+            console.log(`You Won! Rock beats Paper.`);
+            humanScore++;
+        }
+    }else if(humanChoice == 2) {
+        if(computerChoice == 2) {
+            console.log(`Tie Game!`);
+        }else if(computerChoice == 3) {
+            console.log(`You Lose! Scissor beats Paper.`);
+            computerScore++;
+        }else {
+            console.log(`You Won! Paper beats Rock.`);
+            humanScore++;
+        }
+    }else {
+        if(computerChoice == 3) {
+            console.log(`Tie Game!`);
+        }else if(computerChoice == 1) {
+            console.log(`You Lose! Rock beats Scissor.`);
+            computerScore++;
+        }else {
+            console.log(`You Won! Scissor beats Paper.`);
+        }
+    }
+}
 
-let humanScore = 0;
-let computerScore = 0;
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
